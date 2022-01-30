@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Baumans&family=Work+Sans:ital,wght@1,200&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+  user-select: none;
+}
+
+body {
+  text-align: center;
+  min-height: 100vh;
+  background: url(./assets/img/bg-rambo.jpg) no-repeat 0% 0%/cover;
+}
+body #canvas {
+  cursor: crosshair;
+  border: none;
+  border-top: 1px rgba(66, 0, 0, 0.561) solid;
+  border-left: 1px rgba(66, 0, 0, 0.561) solid;
+  background: linear-gradient(135deg, #ff00006b 0%, #ff0000da 100%);
+  box-shadow: 0 10px 15px black;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 500px;
+  width: 500px;
+}
+body #canvas .virus {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: var(--y);
+  width: var(--x);
+  --scaler: 1;
+  animation: virusAnim 14s forwards;
+}
+body #canvas .virus:hover {
+  --scaler: 1.03;
+}
+body #canvas .virus:active {
+  --scaler: 0.97;
+}
+
+/*# sourceMappingURL=style.css.map */
