@@ -3,7 +3,7 @@ const score = document.getElementById('score');
 const days = document.getElementById('days');
 const endScreen = document.getElementById('endScreen');
 
-daysLeft = 60;
+daysLeft = 2;
 gameOverNumber = 50;
 loopPlay = false;
 
@@ -20,8 +20,6 @@ function start() {
     loopPlay ? '' : game();
     loopPlay = true;
 
-    game();
-
     function game() {
 
         let randomTime = Math.round(Math.random() * getFaster);
@@ -32,15 +30,30 @@ function start() {
                 youWin();
             }
             else if(canvas.childElementCount < gameOverNumber) {
-
+                virusPop();
+                game();
+            } else {
+                gameOver();
             }
-            virusPop();
-            game();
         }, randomTime);
     };
 
+    const gameOver = () => {
+        endScreen.innerHTML = `<div class="
+        gameOver"> Game Over <br/>score : ${count}</div>`;
+        endScreen.style.visibility = 'visible';
+        endScreen.style.opacity = '1';
+        loopPlay = false;
+    };
 
-}
+    const youWin = () => {
+        let accuracy = Math.round(count / daysLeft * 100);
+        endScreen.innerHTML = `<div class="youWin">Bravo ! Tu as shooté le Covid<br/><span>Précision : ${accuracy}%</span></div>`;
+        endScreen.style.visibility = 'visible';
+        endScreen.style.opacity = '1';
+        loopPlay = false;
+    }
+};
 
 function virusPop() {
     let virus = new Image();
@@ -64,7 +77,7 @@ function virusPop() {
     virus.style.setProperty('--trY', `${ trY}%`)
 
     canvas.appendChild(virus);
-}
+};
 
 document.addEventListener('click', function(e) {
     let targetElement = e.target || e.srcElement;
@@ -74,4 +87,19 @@ document.addEventListener('click', function(e) {
         count++;
         score.innerHTML = count;
     }
+});
+
+canvas.addEventListener('click', () =>{
+    if(daysRemaining > 0) {
+        daysRemaining--;
+        days.innerHTML = daysRemaining;
+    }
+});
+
+endScreen.addEventListener('click', () =>{
+    setTimeout(() => {
+    start();
+    endScreen.opacity = '0';
+    endScreen.style.visibility = 'hidden';  
+    }, 3500)  
 });
