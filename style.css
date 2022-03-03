@@ -10,7 +10,7 @@
 body {
   text-align: center;
   min-height: 100vh;
-  background: url(./assets/img/bg-rambo.jpg) no-repeat 0% 0%/cover;
+  background: url(./assets/img/bg.jpg) no-repeat 0% 0%/cover;
 }
 body #endScreen {
   position: absolute;

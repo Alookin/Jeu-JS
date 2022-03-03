@@ -3,8 +3,8 @@ const score = document.getElementById('score');
 const days = document.getElementById('days');
 const endScreen = document.getElementById('endScreen');
 
-daysLeft = 2;
-gameOverNumber = 50;
+daysLeft = 60;
+gameOverNumber = 40;
 loopPlay = false;
 
 function start() {
